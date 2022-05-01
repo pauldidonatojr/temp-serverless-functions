@@ -12,7 +12,10 @@ const { id } = event.queryStringParameters
             const product = await airtable.retrieve(id)
             console.log(product)
             if (product.error) {
-            return {
+                return {
+                headers: {
+            'Access-Control-Allow-Origin':'*',
+            },
             statusCode: 404,
             body: `No product with id: ${id}`
         }
@@ -25,7 +28,10 @@ const { id } = event.queryStringParameters
             body: JSON.stringify(product),
         }
       } catch (error) {
-             return {
+            return {
+            headers: {
+            'Access-Control-Allow-Origin':'*',
+            },
             statusCode: 500,
             body: `Server Error`
         }
@@ -42,13 +48,17 @@ const { id } = event.queryStringParameters
             return {id,name,url,category, location}
         })
          return {
-
+         headers: {
+            'Access-Control-Allow-Origin':'*',
+        },
         statusCode: 200,
         body: JSON.stringify(products),
     }
     } catch (error) {
          return {
-
+         headers: {
+            'Access-Control-Allow-Origin':'*',
+        },
         statusCode: 404,
         body: 'Server Error',
     }

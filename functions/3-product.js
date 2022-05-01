@@ -13,6 +13,9 @@ const { id } = event.queryStringParameters
             console.log(product)
             if (product.error) {
             return {
+            headers: {
+            'Access-Control-Allow-Origin':'*',
+        },
             statusCode: 404,
             body: `No product with id: ${id}`
         }
@@ -25,7 +28,10 @@ const { id } = event.queryStringParameters
             body: JSON.stringify(product),
         }
       } catch (error) {
-             return {
+            return {
+            headers: {
+            'Access-Control-Allow-Origin':'*',
+         },
             statusCode: 500,
             body: `Server Error`
         }
@@ -33,7 +39,10 @@ const { id } = event.queryStringParameters
 
 
 }
-      return {
+    return {
+        headers: {
+            'Access-Control-Allow-Origin':'*',
+        },
         statusCode: 400,
         body: 'Please provide product id',
     }
