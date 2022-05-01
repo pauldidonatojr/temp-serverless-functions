@@ -17,7 +17,10 @@ const { id } = event.queryStringParameters
             body: `No product with id: ${id}`
         }
             }
-             return {
+            return {
+            headers: {
+            'Access-Control-Allow-Origin':'*',
+            },
             statusCode: 200,
             body: JSON.stringify(product),
         }
